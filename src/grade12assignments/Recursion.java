@@ -75,6 +75,41 @@ public class Recursion {
         maze[startX][startY]=0;
     }
     
+    public int combin(int index, int[] people, int groupSize){
+        // I have formed a group
+        if(groupSize == 0){
+            return 1;
+        }
+        // ran out of people
+        if(index >= people.length){
+            return 0;
+        }
+        // use the person or not
+        int using = combin(index+1,people,groupSize-1);
+        int notUsing = combin(index+1,people,groupSize);
+        
+        // return the sum
+        return using + notUsing;
+    }
+    
+    public int mostSugar(int index, int[] pies){
+        // if you have gone through everything
+        if(index >= pies.length){
+            return 0;
+        }
+        // eat the pie or not
+        int eatPie = pies[index] + mostSugar(index+2,pies);
+        int leavePie = mostSugar(index+1,pies);
+        
+        // which is better?
+        if(eatPie > leavePie){
+            return eatPie;
+        }else{
+            return leavePie;
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -128,7 +163,15 @@ public class Recursion {
         maze1[4][5]=1;
         maze1[5][5]=1;
         
-        test.solveMaze(maze1, 0, 1, 5, 3);
+        //test.solveMaze(maze1, 0, 1, 5, 3);
+        
+        int[] pies = {10,1,1,10};
+        int best = test.mostSugar(0,pies);
+        System.out.println("Most sugar: "+ best);
+        
+        int[] people = {1,2,3,4};
+        int groups = test.combin(0,people,2);
+        System.out.println("Num groups: "+ groups);
     }
     
 }
