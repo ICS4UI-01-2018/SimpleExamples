@@ -70,13 +70,45 @@ public class Sorting {
         }
     }
     
+    public int linearSearch(int num, int[] n){
+        // go through each element
+        for(int i = 0; i < n.length; i++){
+            // is this the one?
+            if(n[i] == num){
+                return i;
+            }
+        }
+        // did not find it
+        return -1;
+    }
+    
+    int binarySearch(int num, int[] n){
+        // which section are we looking
+        int start = 0;
+        int end = n.length;
+        while(start <= end){
+            // where to look
+            int mid = (start + end)/2;
+            // is the number here?
+            if(n[mid] == num){
+                return mid;
+            }else if(n[mid] < num){
+                start = mid + 1;
+            }else{
+                end = mid - 1;
+            }
+        }
+        // haven't found
+        return -1;
+    }
+    
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // array of numbers to sort
-        int[] nums = new int[100000];
+        int[] nums = new int[10];
         
         // randomly assign values
         for (int i = 0; i < nums.length; i++) {
@@ -99,6 +131,13 @@ public class Sorting {
         System.out.println("AFTER:");
         for (int i = 0; i < nums.length; i++) {
             System.out.println(nums[i]);
+        }
+        
+        int location = test.binarySearch(35, nums);
+        if(location != -1){
+            System.out.println("found at " + location);
+        }else{
+            System.out.println("Not found");
         }
     }
     
