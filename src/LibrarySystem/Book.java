@@ -5,6 +5,7 @@
  */
 package LibrarySystem;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -56,5 +57,19 @@ public class Book {
         this.onLoan = false;
         this.borrowing = null;
         this.returnDate = null;
+    }
+    
+    
+    public void checkOut(LibraryMember member){
+        this.borrowing = member;
+        this.onLoan = true;
+        // use a Calendar to set a date 2 weeks in the future
+        Calendar c = Calendar.getInstance();
+        // setting the date to the current date
+        c.setTimeInMillis(System.currentTimeMillis());
+        // add two weeks
+        c.add(Calendar.WEEK_OF_YEAR, 2);
+        // set the return date
+        this.returnDate = c.getTime();
     }
 }
