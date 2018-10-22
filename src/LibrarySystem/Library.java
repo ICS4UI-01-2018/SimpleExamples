@@ -5,7 +5,12 @@
  */
 package LibrarySystem;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +23,16 @@ public class Library {
     public Library(){
         this.books = new ArrayList<>();
         this.members = new ArrayList<>();
+    }
+    
+    public Library(String bookFile){
+        this.members = new ArrayList<>();
+        this.books = new ArrayList<>();
+        try {
+            Scanner input = new Scanner(new File("books.txt"));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Library.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public Book findBook(int isbn){
