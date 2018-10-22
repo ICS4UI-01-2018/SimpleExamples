@@ -14,7 +14,7 @@ import java.util.Date;
  * @author lamon
  */
 public class Book {
-    private int isbn;
+    private long isbn;
     private String title;
     private String author;
     private boolean onLoan;
@@ -27,7 +27,7 @@ public class Book {
      * @param title the title of the book
      * @param author the author of the book
      */
-    public Book(int isbn, String title, String author){
+    public Book(long isbn, String title, String author){
         this.isbn = isbn;
         this.title = title;
         this.author = author;
@@ -56,7 +56,7 @@ public class Book {
      * Returns the ISBN number of the book
      * @return the integer representing the ISBN number of the book
      */
-    public int getISBN(){
+    public long getISBN(){
         return this.isbn;
     }
     

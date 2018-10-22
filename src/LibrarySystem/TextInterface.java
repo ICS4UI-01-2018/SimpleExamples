@@ -18,7 +18,7 @@ public class TextInterface {
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        Library library = new Library();
+        Library library = new Library("books.txt");
         while(true){
             System.out.println("Main Menu");
             System.out.println("1 - add a book");
@@ -33,10 +33,11 @@ public class TextInterface {
             input.nextLine();
             
             if(choice == 0){
+                library.saveBookFile("books.txt");
                 System.exit(0);
             }else if(choice == 1){
                 System.out.println("Please enter the ISBN");
-                int isbn = input.nextInt();
+                long isbn = input.nextLong();
                 input.nextLine();
                 System.out.println("Please enter the title");
                 String title = input.nextLine();
@@ -47,7 +48,7 @@ public class TextInterface {
                 
             }else if(choice == 3){
                 System.out.println("Enter the ISBN");
-                int isbn = input.nextInt();
+                long isbn = input.nextLong();
                 input.nextLine();
                 Book b = library.findBook(isbn);
                 if(b != null){
