@@ -1,9 +1,9 @@
-812550706,Enders Game,Orson Scott Card
+812550706,Enders Game,Orson Scott Card,endersgame.jpg
 1417648457,Speaker for the Dead,Orson Scott Card
 60850523,Brave New World,Aldous Huxley
 330316117,The Hitchhikers Guide To The Galaxy,Douglas Adams
 575070706,Dune,Frank Herbert
-735619670,Code Complete: A Practical Handbook of Software Construction,Steve McConnell
+735619670,Code Complete: A Practical Handbook of Software Construction,Steve McConnell,codecomplete.jpg
 61242705,Freakonomics,Steven Levitt
 547572484,The Man in the High Castle,Philip K. Dick
 1857988132,Do Androids Dream of Electric Sheep?,Philip K. Dick
