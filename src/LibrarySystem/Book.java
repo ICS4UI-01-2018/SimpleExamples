@@ -5,8 +5,11 @@
  */
 package LibrarySystem;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
+import javax.imageio.ImageIO;
 
 /**
  * Represents a Single Library Book. 
@@ -20,6 +23,7 @@ public class Book {
     private boolean onLoan;
     private Date returnDate;
     private LibraryMember borrowing;
+    private BufferedImage coverPhoto;
     
     /**
      * Makes a book using ISBN Number, Title and Author
@@ -34,6 +38,21 @@ public class Book {
         this.onLoan = false;
         this.returnDate = null;
         this.borrowing = null;
+        this.coverPhoto = null;
+    }
+    
+    public Book(long isbn, String title, String author, String filename){
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.onLoan = false;
+        this.returnDate = null;
+        this.borrowing = null;
+        try{
+            this.coverPhoto = ImageIO.read(new File(filename));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
     /**
@@ -108,5 +127,9 @@ public class Book {
         c.add(Calendar.WEEK_OF_YEAR, 2);
         // set the return date
         this.returnDate = c.getTime();
+    }
+
+    public BufferedImage getImage() {
+        return this.coverPhoto;
     }
 }

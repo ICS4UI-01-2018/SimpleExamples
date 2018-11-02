@@ -1,4 +1,4 @@
-812550706,Enders Game,Orson Scott Card,endersgame.jpg
+812550706,Enders Game,Orson Scott Card,endersgame.jpeg
 1417648457,Speaker for the Dead,Orson Scott Card
 60850523,Brave New World,Aldous Huxley
 330316117,The Hitchhikers Guide To The Galaxy,Douglas Adams

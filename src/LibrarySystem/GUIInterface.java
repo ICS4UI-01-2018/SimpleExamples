@@ -11,11 +11,14 @@ package LibrarySystem;
  */
 public class GUIInterface extends javax.swing.JFrame {
 
+    private Library lib;
+    
     /**
      * Creates new form GUIInterface
      */
     public GUIInterface() {
         initComponents();
+        lib = new Library("books.txt");
     }
 
     /**
@@ -32,6 +35,7 @@ public class GUIInterface extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         bookTitleLabel = new javax.swing.JLabel();
         bookAuthorLabel = new javax.swing.JLabel();
+        coverImage = new LibrarySystem.ImagePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,6 +47,11 @@ public class GUIInterface extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         bookTitleLabel.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         bookTitleLabel.setText("BOOK TITLE GOES HERE");
@@ -68,7 +77,10 @@ public class GUIInterface extends javax.swing.JFrame {
                         .addComponent(bookTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(bookAuthorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bookAuthorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(coverImage, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -87,11 +99,24 @@ public class GUIInterface extends javax.swing.JFrame {
                 .addComponent(bookTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(bookAuthorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(coverImage, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       String isbnText = isbnInput.getText();
+       long isbn = Long.parseLong(isbnText);
+       Book b = lib.findBook(isbn);
+       if(b != null){
+           bookTitleLabel.setText(b.getTitle());
+           bookAuthorLabel.setText(b.getAuthor());
+           coverImage.setImage(b.getImage());
+       }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,6 +156,7 @@ public class GUIInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bookAuthorLabel;
     private javax.swing.JLabel bookTitleLabel;
+    private LibrarySystem.ImagePanel coverImage;
     private javax.swing.JTextField isbnInput;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

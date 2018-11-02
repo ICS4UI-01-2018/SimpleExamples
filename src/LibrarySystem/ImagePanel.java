@@ -5,6 +5,7 @@
  */
 package LibrarySystem;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -32,12 +33,21 @@ public class ImagePanel extends JComponent{
         }
         
         this.image = img;
+        repaint();
+    }
+    
+    public void setImage(BufferedImage img){
+        this.image = img;
+        repaint();
     }
     
     @Override
     public void paintComponent(Graphics g){
         if(this.image != null){
             g.drawImage(this.image, 0, 0, this.getWidth(), this.getHeight(),null);
+        }else{
+            g.setColor(Color.WHITE);
+            g.fillRect(0, 0, this.getWidth(), this.getHeight());
         }
     }
     

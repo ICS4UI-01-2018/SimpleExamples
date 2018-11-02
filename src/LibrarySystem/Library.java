@@ -38,8 +38,15 @@ public class Library {
                 long isbn = Long.parseLong(bookInfo[0]);
                 String title = bookInfo[1];
                 String author = bookInfo[2];
-                Book b = new Book(isbn,title,author);
-                this.books.add(b);
+                if(bookInfo.length == 3){
+                    Book b = new Book(isbn,title,author);
+                    this.books.add(b);
+                }else{
+                    String filename = "images\\"+bookInfo[3];
+                    
+                    Book b = new Book(isbn,title,author, filename);
+                    this.books.add(b);
+                }
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Library.class.getName()).log(Level.SEVERE, null, ex);
