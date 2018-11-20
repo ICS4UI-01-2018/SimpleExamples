@@ -9,7 +9,7 @@ package Inheritance;
  *
  * @author lamon
  */
-public class Pet {
+public abstract class Pet {
     private String name;
     private int age;
     private String colour;
@@ -20,9 +20,7 @@ public class Pet {
         this.colour = colour;
     }
     
-    public void speak(){
-        
-    }
+    public abstract void speak();
     
     public String getName(){
         return this.name;
